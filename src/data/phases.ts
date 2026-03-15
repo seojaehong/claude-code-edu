@@ -481,6 +481,103 @@ export const phases: Phase[] = [
       },
     ],
   },
+
+  // ─────────────────────────────────────────────
+  // Phase 7: 실전 사례 — 이런 것까지 자동화했습니다
+  // ─────────────────────────────────────────────
+  {
+    id: 7,
+    title: "실전 사례 — 이런 것까지 자동화했습니다",
+    description:
+      "급여 관리, 판례 검색, 블로그 발행, 수임 자동화, 한글 문서 생성. 실제로 만들어서 쓰고 있는 자동화 시스템의 비하인드.",
+    lessons: [
+      {
+        id: "7-1",
+        phase: 7,
+        order: 1,
+        title: "급여 관리 스킬 — 30개 사업장 4대보험을 AI가 검증",
+        description:
+          "매달 30개 사업장의 급여를 처리할 때, Claude가 4대보험 계산 오류를 자동으로 잡아냅니다. CLAUDE.md에 업무 규칙을 넣으면 AI가 전문가처럼 검토합니다.",
+        slug: "7-1",
+        estimatedMinutes: 25,
+        difficulty: "advanced" as const,
+        tags: ["사례 분석", "실습", "자동화"],
+        learningGoals: [
+          "실무 규칙을 CLAUDE.md/스킬에 녹이는 방법을 이해한다",
+          "4대보험 상한·하한 처리 등 도메인 규칙을 AI에 가르치는 법을 안다",
+          "30개 사업장 규모의 반복 검증 자동화 사례를 참고할 수 있다",
+        ],
+      },
+      {
+        id: "7-2",
+        phase: 7,
+        order: 2,
+        title: "Chrome 자동화 — 판례 검색 4탭 병렬 처리",
+        description:
+          "엘박스, 슈퍼로이어, BigCase를 Claude가 직접 열어서 검색합니다. 4개 탭을 동시에 돌리고, 결과를 마크다운으로 정리합니다.",
+        slug: "7-2",
+        estimatedMinutes: 25,
+        difficulty: "advanced" as const,
+        tags: ["사례 분석", "자동화", "도구 활용"],
+        learningGoals: [
+          "Chrome MCP로 법률 플랫폼을 자동 검색하는 워크플로우를 이해한다",
+          "4탭 병렬 검색의 구조와 감사 로그 생성 방식을 안다",
+          "AI 검색 결과의 할루시네이션 검증 방법을 안다",
+        ],
+      },
+      {
+        id: "7-3",
+        phase: 7,
+        order: 3,
+        title: "블로그 자동 발행 — 글 쓰고 발행까지 한 번에",
+        description:
+          "마크다운으로 글을 쓰면 Claude가 티스토리에 자동 발행합니다. 시리즈 5편을 한 번에 올리는 배치 처리까지.",
+        slug: "7-3",
+        estimatedMinutes: 20,
+        difficulty: "advanced" as const,
+        tags: ["사례 분석", "자동화"],
+        learningGoals: [
+          "마크다운 → 블로그 자동 발행 파이프라인의 구조를 이해한다",
+          "세션 유지와 배치 처리의 개념을 안다",
+          "자신의 블로그에 적용할 수 있는 자동화 아이디어를 얻는다",
+        ],
+      },
+      {
+        id: "7-4",
+        phase: 7,
+        order: 4,
+        title: "수임 자동화 GUI — 명함 사진 → 서류 5종 자동 생성",
+        description:
+          "거래처 명함을 사진 찍으면 OCR로 정보를 추출하고, 사무위탁서·수임신청서·위임장 등 5종을 한 번에 만듭니다.",
+        slug: "7-4",
+        estimatedMinutes: 25,
+        difficulty: "advanced" as const,
+        tags: ["사례 분석", "자동화", "도구 활용"],
+        learningGoals: [
+          "OCR + AI + 문서 생성을 결합한 자동화 사례를 이해한다",
+          "Streamlit으로 비개발자도 쓸 수 있는 GUI를 만드는 개념을 안다",
+          "템플릿 기반 문서 생성의 원리를 이해한다",
+        ],
+      },
+      {
+        id: "7-5",
+        phase: 7,
+        order: 5,
+        title: "한글(HWPX) 자동 생성 — 의견서를 AI가 써서 한글 파일로",
+        description:
+          "Claude가 작성한 법률 의견서를 자동으로 한글(.hwpx) 파일로 변환합니다. 3단계 검증으로 깨진 파일이 나오지 않습니다.",
+        slug: "7-5",
+        estimatedMinutes: 25,
+        difficulty: "advanced" as const,
+        tags: ["사례 분석", "자동화", "도구 활용"],
+        learningGoals: [
+          "HWPX 파일 구조(ZIP + XML)를 이해한다",
+          "마크다운 → HWPX 변환 파이프라인의 원리를 안다",
+          "3단계 검증 게이트로 문서 품질을 보장하는 방법을 안다",
+        ],
+      },
+    ],
+  },
 ];
 
 // 유틸리티 함수
