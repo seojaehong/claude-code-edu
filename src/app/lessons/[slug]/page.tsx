@@ -15,6 +15,8 @@ import { PrevNextNav } from "@/components/PrevNextNav";
 import { CompleteButton } from "@/components/CompleteButton";
 import { CodeBlock } from "@/components/CodeBlock";
 import { TryThis, KeyPoint, BeforeAfter } from "@/components/callouts";
+import { TableOfContents } from "@/components/TableOfContents";
+import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { lessonContents } from "@/data/lesson-content";
 import { useProgress } from "@/hooks/useProgress";
 
@@ -106,7 +108,7 @@ export default function LessonDetailPage() {
         />
 
         {/* Main content */}
-        <main className="flex-1 min-w-0 max-w-4xl mx-auto w-full px-4 md:px-8 py-8">
+        <main className="flex-1 min-w-0 max-w-4xl mx-auto w-full px-4 md:px-8 py-8 pb-20 md:pb-8">
           {/* Breadcrumb */}
           <Breadcrumb
             items={[
@@ -174,7 +176,20 @@ export default function LessonDetailPage() {
             <PrevNextNav prev={prevLesson} next={nextLesson} />
           </div>
         </main>
+
+        {/* Right sidebar - Table of Contents (lg+ only) */}
+        <aside className="hidden lg:block sticky top-14 h-[calc(100vh-3.5rem)] w-48 shrink-0 overflow-y-auto py-8 pr-4">
+          <TableOfContents />
+        </aside>
       </div>
+
+      {/* Mobile sticky bottom navigation */}
+      <MobileBottomNav
+        prev={prevLesson}
+        next={nextLesson}
+        currentIndex={currentIndex}
+        totalLessons={totalLessons}
+      />
 
       <Footer />
       <SearchDialog

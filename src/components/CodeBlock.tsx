@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Check, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { codeToHtml } from "shiki/bundle/web";
 
 interface CodeBlockProps {
   children: string;
@@ -18,6 +19,53 @@ export function CodeBlock({
   className,
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const [highlightedHtml, setHighlightedHtml] = useState<string | null>(null);
+
+  useEffect(() => {
+    const lang = language || "text";
+    // Map common language aliases
+    const langMap: Record<string, string> = {
+      bash: "bash",
+      sh: "bash",
+      shell: "bash",
+      typescript: "typescript",
+      ts: "typescript",
+      javascript: "javascript",
+      js: "javascript",
+      json: "json",
+      python: "python",
+      py: "python",
+      powershell: "powershell",
+      ps1: "powershell",
+      yaml: "yaml",
+      yml: "yaml",
+      markdown: "markdown",
+      md: "markdown",
+      text: "text",
+      plaintext: "text",
+      txt: "text",
+      html: "html",
+      css: "css",
+    };
+    const resolvedLang = langMap[lang.toLowerCase()] || "text";
+
+    let cancelled = false;
+    codeToHtml(children, {
+      lang: resolvedLang,
+      theme: "github-dark",
+    })
+      .then((html) => {
+        if (!cancelled) setHighlightedHtml(html);
+      })
+      .catch(() => {
+        // Fallback: no highlighting
+        if (!cancelled) setHighlightedHtml(null);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [children, language]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(children);
@@ -70,9 +118,16 @@ export function CodeBlock({
           )}
         </button>
       )}
-      <pre className="bg-zinc-900 p-4 overflow-x-auto text-sm md:text-sm text-xs leading-relaxed">
-        <code className="font-mono text-zinc-100">{children}</code>
-      </pre>
+      {highlightedHtml ? (
+        <div
+          className="shiki-wrapper bg-zinc-900 overflow-x-auto text-sm md:text-sm text-xs leading-relaxed [&_pre]:!bg-zinc-900 [&_pre]:p-4 [&_pre]:m-0 [&_code]:font-mono"
+          dangerouslySetInnerHTML={{ __html: highlightedHtml }}
+        />
+      ) : (
+        <pre className="bg-zinc-900 p-4 overflow-x-auto text-sm md:text-sm text-xs leading-relaxed">
+          <code className="font-mono text-zinc-100">{children}</code>
+        </pre>
+      )}
     </div>
   );
 }
