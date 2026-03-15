@@ -3128,7 +3128,7 @@ claude mcp list`}</CodeBlock>
         핵심은 CLAUDE.md에 4대보험 계산 규칙을 정확히 적어두는 것입니다.
         Claude가 이 규칙을 매 세션마다 읽고, 급여 데이터를 검증할 때 적용합니다.
       </p>
-      <CodeBlock language="markdown">{`## 4대보험 계산 규칙 (2025년 기준)
+      <CodeBlock language="markdown">{`## 4대보험 계산 규칙 (2026년 기준)
 
 ### 요율
 - 국민연금: 4.5% (근로자 부담분)

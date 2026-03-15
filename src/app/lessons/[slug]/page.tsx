@@ -90,7 +90,7 @@ export default function LessonDetailPage() {
 
       <div className="flex flex-1">
         {/* Desktop sidebar */}
-        <div className="hidden md:block sticky top-14 h-[calc(100vh-3.5rem)]">
+        <div className="hidden md:block sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto">
           <LessonSidebar
             phases={phases}
             currentLessonId={lesson.id}

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | Claude Code Edu",
   },
   description:
-    "비개발자 전문직을 위한 Claude Code 실무 활용 가이드. 노무사, 변호사, 회계사, 세무사를 위한 47개 강의.",
+    "비개발자 전문직을 위한 Claude Code 실무 활용 가이드. 노무사, 변호사, 회계사, 세무사를 위한 28개 강의.",
   keywords: ["Claude Code", "AI", "전문직", "노무사", "업무 자동화", "Claude"],
 };
 
